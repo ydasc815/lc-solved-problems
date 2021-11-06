@@ -1,11 +1,16 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& n) {
-        map<int, int> m;
-        for(int i:n) {
-            m[i]++;
-            if(m[i] > 1) return i;
+        int s = n[0], f = n[0];
+        do {
+            s = n[s];
+            f = n[n[f]];
+        } while(s != f);
+        f = n[0];
+        while(f != s) {
+            s = n[s];
+            f = n[f];
         }
-        return -1;
+        return s;
     }
 };
