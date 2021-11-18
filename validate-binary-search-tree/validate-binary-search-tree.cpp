@@ -12,21 +12,19 @@
 class Solution {
 public:
     vector<int> traversal;
-    map<int, int> m;
+    set<int> s;
     bool isValidBST(TreeNode* root) {
         inorder(root);
         vector<int> temp = traversal;
         sort(temp.begin(), temp.end());
-        int dupflag = 1;
-        for(auto& i:m) if(i.second > 1) { dupflag = 0; break; }
-        return temp == traversal && dupflag;
+        return temp == traversal && s.size() == temp.size();
     }
     
     void inorder(TreeNode* root) {
         if(root == nullptr) return;
         inorder(root->left);
         traversal.push_back(root->val);
-        m[root->val]++;
+        s.insert(root->val);
         inorder(root->right);
     }
 };
