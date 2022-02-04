@@ -9,7 +9,11 @@ public:
                 mx = h[i];
             }
         }
-        reverse(res.begin(), res.end());
+        int i=0, j=res.size()-1;
+        while(i < j) {
+            swap(res[i], res[j]);
+            i++, j--;
+        }
         return res;
     }
 };
