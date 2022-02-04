@@ -9,7 +9,7 @@ public:
                 mx = h[i];
             }
         }
-        sort(res.begin(), res.end());
+        reverse(res.begin(), res.end());
         return res;
     }
 };
